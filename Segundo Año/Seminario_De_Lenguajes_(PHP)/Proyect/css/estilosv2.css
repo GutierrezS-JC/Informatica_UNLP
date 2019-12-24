@@ -1,0 +1,214 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+body{
+  background-image: url("../pattern3.jpg");
+  background-size: 200px
+}
+header img{
+  width: 300px;
+  height: 80px;
+}
+#nombre{
+  float: left;
+}
+#login input[type=password]{
+  padding: 6px;
+  margin-top: 20px;
+  font-size: 17px;
+  border: none;
+  width: 150px;
+  position: relative;
+}
+header{
+  background-color: black;
+  width:100%;
+  text-align: center;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+#buscarPorAnio{
+  float: right;
+  position: relative;
+  max-height: 40px;
+}
+#buscarPorAnio input[type=text]{
+  position: relative;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  font-size: 17px;
+  width: 150px;
+  margin-right: 5px;
+}
+#buscarPorGenero{
+  float: right;
+  position: relative;
+  max-height: 40px;
+}
+#buscarPorGenero input[type="text"]{
+  position: relative;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  font-size: 17px;
+  width: 150px;
+  margin-right: 5px;
+}
+#searchbox{
+  float: right;
+  position: relative;
+  max-height: 40px;
+}
+.filtro button{
+  float: right;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  margin-top:-30px;
+}
+
+#boton{
+  width: 60px;
+  height: 70px;
+  padding: 10px;
+  margin-top: 0px;
+}
+#searchbox input[type=text]{
+  position: relative;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  font-size: 17px;
+  width: 300px;
+}
+#login{
+  float: right;
+}
+#login input[type=text]{
+  padding: 6px;
+  margin-top: 20px;
+  font-size: 17px;
+  border: none;
+  width: 150px;
+  position: relative;
+}
+#login button{
+  float: right;
+  padding: 6px;
+  margin-top: 20px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+label p{
+  color: white;
+}
+
+
+.titleAndYear{
+  margin-bottom: 5px;
+  max-width: 200px;
+}
+.filtro{
+  margin:0 auto;
+  width:90%;
+  min-height: 40px;
+  background-color: #ecf4f2;
+  display: flex; /por que flex y no block?/
+}
+.filtro h2{
+  top:8px;
+  position: relative;
+  left:10px;
+  float: left;
+  font-size: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.filtro label{
+  color: rgb(0, 0, 0);
+  margin-right: 10px;
+  display: inline;
+  padding: 6px;
+}
+.filtro form{
+  display: block;
+  width: 100%;
+  padding: 6px;
+}
+.ordenarPor{
+  float: right;
+  position: relative;
+  right:30px;
+}
+#ordenar{
+  position: relative;
+  float: right;
+  z-index: 1;
+  margin-left: 50px;
+  top: 20px;
+}
+#main{
+  margin:0 auto;
+  width:90%;
+  min-height: 600px;
+}
+.tres img{
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 300px;
+  max-height: 300px;
+}
+.tres{
+  width: 100%;
+  margin-top: 20px;
+  background-color:#ecf4f2;
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.tres a{
+  text-decoration: none;
+  color: black;
+  margin-bottom: -3px;
+}
+.infoPelis{
+  margin: 20px;
+  max-width: 80%;
+}
+
+.page-change{
+  margin:0 auto;
+  width:90%;
+  min-height: 40px;
+  margin-top: 20px;
+  background-color: #ecf4f2;
+}
+.SeleccionPagina{
+  float: right;
+  position: relative;
+  right:30px;
+  top:10px;
+}
+.SeleccionPagina a{
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+footer{
+  margin-top: 80px;
+  clear:both;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+}
+footer p{
+  color: white;
+}

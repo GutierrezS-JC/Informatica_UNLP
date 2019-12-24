@@ -1,0 +1,237 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+}
+
+body{
+  background-image: url("../pattern3.jpg");
+  background-size: 250px
+}
+.datos{
+  width: 60%;
+  padding: 150px;
+}
+header img{
+  width: 300px;
+  height: 80px;
+}
+#nombre{
+  float: left;
+}
+header{
+  background-color: black;
+  width:100%;
+  text-align: center;
+  margin-bottom: 80px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+#login{
+  float: right;
+}
+#login input[type=text]{
+  padding: 6px;
+  margin-top: 20px;
+  font-size: 17px;
+  border: none;
+  width: 150px;
+  position: relative;
+}
+#login input[type=password]{
+  padding: 6px;
+  margin-top: 20px;
+  font-size: 17px;
+  border: none;
+  width: 150px;
+  position: relative;
+}
+#login button{
+  float: right;
+  padding: 6px;
+  margin-top: 20px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+label p{
+  color: white;
+}
+.comentariosMainv2 img{
+  width: 400px;
+  margin-right: 10px;
+  height: 100%;
+}
+
+h2{
+  font-size: 40px;
+}
+.main{
+  margin:0 auto;
+  width:90%;
+  /*min-height: 600px;*/
+}
+.tres{
+  width: 100%;
+  margin-top: 20px;
+  background-color:#ecf4f2;
+  display: flex;
+  flex-wrap:wrap;
+}
+.tres img{
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 300px;
+  max-height: 300px;
+}
+.tres a{
+  text-decoration: none;
+  color: black;
+}
+.infoPelis{
+  margin: 20px;
+  max-width: 80%;
+}
+.titleAndYear{
+  margin-bottom: 5px;
+  max-width: 200px;
+}
+.wrapper{
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-color: red;
+}
+.posteo{
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+  position:relative;
+}
+.thead{
+  color: black;
+  background: #b5b5b5;
+  max-width: 100%;
+  width: 100%;
+  padding: 5px;
+}
+.fecha{
+	position: relative;
+  float: left;
+  padding-left: 10px;
+}
+
+.eliminar{
+  float: right;
+}
+.imgDatos{
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background: #e4e2e2;
+  max-height: 100%;
+  border:0;
+  padding: 0px;
+}
+.imgDatos img{
+  max-width: 120px;
+  max-height: 120px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.nombreUsuario{
+  margin-left: 10px;
+}
+.contenidoPosteo{
+  margin-left: 10px;
+  width: 80%;
+  min-width: 50%;
+}
+.textoPosteov2{
+  margin:10px;
+}
+.meGusta{
+  position: absolute;
+  bottom: 0;
+  right:0;
+  margin-right: 5px;
+}
+.boxComentar{
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+  background-color: #e9e9e9;
+  margin-top: 40px;
+
+  text-align: center;
+}
+.boxComentar h2{
+  font-family: Helvetica;
+  font-size: 30px;
+
+}
+.boxComentar textarea{
+  resize: none;
+  padding: 10px;
+  font-family: Helvetica;
+  max-height: 100%;
+  outline: none;
+}
+.comentariosMain{
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+  background: #e9e9e9;
+}
+.comentariosMainv2{
+    margin: 0 auto;
+    width: 70%;
+    height: 100%;
+    background: #e9e9e9;
+    display: flex;
+    flex-wrap: wrap;
+}
+.coment{
+  width: 640px; /*can be in percentage also.*/
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+.cajaComentarios input[type=submit]{
+  width: 100%;
+  padding: 10px;
+}
+.page-change{
+  margin:0 auto;
+  width:70%;
+  min-height: 40px;
+  margin-top: 20px;
+  background-color: #ecf4f2;
+}
+.SeleccionPagina{
+  float: right;
+  position: relative;
+  right:30px;
+  top:10px;
+}
+.SeleccionPagina a{
+  text-decoration: none;
+  margin-left: 5px;
+}
+footer{
+  margin-top: 80px;
+  clear:both;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+}
+footer p{
+  color: white;
+}
