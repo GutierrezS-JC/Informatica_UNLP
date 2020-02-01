@@ -1,0 +1,62 @@
+programa Ejercicio4-2
+procesos
+  proceso juntarFlores(ES cantFlores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantFlores:=cantFlores+1
+  fin
+  
+  proceso depositarFlores
+  comenzar
+    mientras(HayFlorEnLaBolsa)
+      depositarFlor
+  fin
+  
+  proceso hacerPerimetro(ES cantFlores:numero)
+  comenzar
+    repetir 2
+      repetir 20
+        juntarFlores(cantFlores)
+        mover
+      derecha
+      repetir 15
+        juntarFlores(cantFlores)
+        mover
+      derecha
+  fin
+areas
+  Area1 : AreaP(15,15,30,35)
+  Area2: AreaP(40,40,55,60)
+  Area3: AreaPC(10,10,10,10)
+robots 
+  robot tipo1
+  variables
+    calleOri: numero
+    aveOri: numero
+    cantFlores:numero
+  comenzar
+    calleOri := PosCa
+    aveOri := PosAv
+    cantFlores:=0
+    hacerPerimetro(cantFlores)
+    BloquearEsquina(10, 10)
+    Pos (10,10)
+    depositarFlores
+    Pos(calleOri, aveOri)
+    LiberarEsquina(10,10)
+  fin
+
+
+variables 
+  Robot1: tipo1
+  Robot2: tipo1
+  
+comenzar 
+  AsignarArea(Robot1,Area1)
+  AsignarArea(Robot1,Area3)
+  AsignarArea(Robot2,Area2)
+  AsignarArea(Robot2,Area3)
+  Iniciar(Robot1, 15, 15)
+  Iniciar(Robot2, 40, 40) 
+fin

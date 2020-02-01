@@ -1,0 +1,95 @@
+programa Ejercicio4-3
+procesos
+  proceso Perimetro(ES cantFlores:numero;E alto:numero; E ancho:numero)
+  variables
+    caAnterior:numero
+    caPosterior:numero
+    avAnterior:numero
+    avPosterior:numero
+  comenzar
+    repetir 2  {en realidad va sin repetir y en una parte hace PosAv-1 y PosCa-1}
+      repetir alto
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          cantFlores:=cantFlores+1
+        caPosterior:=PosCa+1
+        caAnterior:=PosCa
+        BloquearEsquina(PosAv,caPosterior)  
+        mover
+        LiberarEsquina(PosAv,caAnterior)
+      derecha
+      repetir ancho
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          cantFlores:=cantFlores+1
+        avPosterior:=PosAv+1
+        avAnterior:=PosAv
+        BloquearEsquina(avPosterior,PosCa)
+        mover
+        LiberarEsquina(avAnterior, PosCa)
+      derecha
+  fin  
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cantFlores:numero
+    avOriginal:numero
+    caOriginal:numero
+    alto:numero
+    ancho:numero
+    av:numero
+    ca:numero
+  comenzar
+    cantFlores:=0
+    avOriginal:=PosAv
+    caOriginal:=PosCa
+    RecibirMensaje(av,robotJefe)
+    RecibirMensaje(ca,robotJefe)
+    RecibirMensaje(alto,robotJefe)
+    RecibirMensaje(ancho,robotJefe)
+    Perimetro(cantFlores,alto,ancho)
+    BloquearEsquina(10,10)
+    Pos(10,10)
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+    Pos(avOriginal,caOriginal)
+    LiberarEsquina(10,10)
+  fin
+  robot tipoJefe
+  variables
+    av:numero
+    ca:numero
+    alto:numero
+    ancho:numero
+  comenzar
+    Random(av,1,30)
+    Random(ca,1,30)
+    EnviarMensaje(av,robot1)
+    EnviarMensaje(ca,robot1)
+    Random(av,1,30)
+    Random(ca,1,30)
+    EnviarMensaje(av,robot2)
+    EnviarMensaje(ca,robot2)
+    Random(alto,1,30)
+    Random(ancho,1,30)
+    EnviarMensaje(alto,robot1)
+    EnviarMensaje(ancho,robot1)
+    Random(alto,1,30)
+    Random(ancho,1,30)
+    EnviarMensaje(alto,robot2)
+    EnviarMensaje(ancho,robot2)
+  fin
+variables
+  robot1:tipo1
+  robot2:tipo1
+  robotJefe:tipoJefe
+comenzar
+  AsignarArea(robot1,ciudad)
+  AsignarArea(robot2,ciudad)
+  AsignarArea(robotJefe,ciudad)
+  Iniciar(robot1,2,2)
+  Iniciar(robot2,6,6)
+  Iniciar(robotJefe,1,1)
+fin

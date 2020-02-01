@@ -1,0 +1,7 @@
+Minimizar uso de mensajes (Priorizar trabajo local)
+Definicion de atomicidad
+Para procesos Random se necesita una variable local para asginarsela a la variable de entrada y salida.
+Para bloquear esquinas de la forma "BloquearEsquina(X+1,PosAv+algo)" mejor usar variables locales y ponerlas en el Bloqueo.
+Los menos van con espacio de la forma X:= X - 1
+Bloqueo a la esquina que quiero ir, voy a la esquina, libero la esquina anterior y hago las operaciones recien
+Ejercicio 4-5 Bloqueo la esquina al principio de todo para evitar que un robot vaya antes y me modifique el valor de las flores que tengo que levantar

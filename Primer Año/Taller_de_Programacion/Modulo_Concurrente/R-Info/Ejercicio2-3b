@@ -1,0 +1,47 @@
+programa Ejercicio2-3b
+procesos
+  proceso Rectangulo(E lado:numero; E lado2:numero; ES cant:numero)
+  comenzar
+    repetir 2
+      repetir lado
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          cant:=cant+1
+        mover
+      derecha
+      repetir lado2
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          cant:=cant+1
+        mover
+      derecha
+  fin
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant:numero
+  comenzar
+    cant:=0
+    Rectangulo(5,3,cant)
+    Informar(cant)
+  fin
+  robot tipo2
+  variables
+    cant:numero
+  comenzar
+    cant:=0
+    Rectangulo(7,3,cant)
+    Informar(cant)
+  fin
+variables
+  Robot1:tipo1
+  Robot2:tipo2
+comenzar
+  AsignarArea(Robot1,ciudad)
+  AsignarArea(Robot2,ciudad)
+  Iniciar(Robot1,2,2)
+  Iniciar(Robot2,6,2)
+fin
+     

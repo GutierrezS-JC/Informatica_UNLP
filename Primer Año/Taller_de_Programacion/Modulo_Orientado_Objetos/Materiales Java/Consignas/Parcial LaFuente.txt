@@ -1,0 +1,21 @@
+Un teatro desea un sistema para poder manejar la venta de localidades de las obras que se brindan.
+El teatro se caracteriza por tener un nombre, una direccion y el nombre del dueño.
+El teatro ademas tiene informacion de sus obras(a lo sumo 5)
+
+Una obra se caracteriza por tener un nombre, el nombre del director y los actores que actuan en dicha obra(a lo sumo 100).
+
+Un actor tiene un nombre y apellido, su genero y la edad en años
+
+a) Realice el modelo de clases. Implemente las clases con sus atributos y metodos para obtener/modificar el valor de los mismos, ademas de los constructores necesarios.
+
+b) Implemente la posibilidad de poder aregar obras al teatro y actores a una obra.
+
+C) Implemente los metodos necesarios(en las clases que correspondan) para poder conocer.
+   I) Dado el nombre de una obra , el nombre del director.
+   II) La obra con menor cantidad de actores.
+   III) El nombre de la obra en donde actua un determinado actor(conociendo su nombre y apellido).
+   IV) El nomnre y apellido del actor con mas edad entre todos los actores de todas las obras.
+
+Nota: Los metodos NO deben imprimir nada, solo devolver lo solictiado.
+Nota2: Piense que todo lo pedido debe poder ser accedido a partir de un teatro, es decir: Si en la funcion main
+       se instancia un teatro, a partir de el se debe poder conocer/hacer todo lo solicitado.

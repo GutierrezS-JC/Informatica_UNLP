@@ -1,0 +1,70 @@
+programa juego
+areas
+  areaJefe:AreaP(1,1,1,1)
+  area1:AreaP(2,2,7,7)
+  area2:AreaP(8,2,13,7)
+  area3:AreaP(14,2,19,7)
+robots
+  robot tipoJefe
+  variables
+    id:numero
+    aux:numero
+    idmax:numero
+    max:numero
+  comenzar
+    max:=0
+    EnviarMensaje(1,robot1)
+    EnviarMensaje(2,robot2)
+    EnviarMensaje(3,robot3)
+    repetir 3
+      RecibirMensaje(id,*)
+      si(id=1)
+        RecibirMensaje(aux,robot1)
+      sino
+        si(id=2)
+          RecibirMensaje(aux,robot2)
+        sino
+          si(id=3)
+            RecibirMensaje(aux,robot3)
+    si(aux>=max)
+      max:=aux
+      idmax:=id
+    informar(id)
+  fin
+  robot tipoJugador
+  variables
+    flores:numero
+    id:numero
+    x:numero
+    y:numero
+    alto:numero
+    ancho:numero
+  comenzar
+    flor:=0
+    x:=posAv
+    y:=posCA
+    RecibirMensaje(id,robot4)
+    repetir 3
+      random(alto,0,5)
+      random(ancho,0,5)
+      alto:=alto+y
+      ancho:=ancho+x
+      pos(alto,ancho)
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        flores:=flores+1
+      pos(x,y)
+    EnviarMensaje(id,robot4)
+    EnviarMensaje(flores,robot4)
+  fin
+variables
+  robot1:tipoJugador
+  robot2:tipoJugador
+  robot3:tipoJugador
+  robot4:tipoJefe
+comenzar
+  AsignarArea(robot1,area1)
+  AsignarArea(robot2,area2)
+  AsignarArea(robot3,area3)
+      
+      

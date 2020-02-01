@@ -1,0 +1,100 @@
+programa Ejercicio4-7
+areas
+  area1:AreaP(9,9,9,9)
+  area2:AreaP(11,9,11,9)
+  area3:AreaP(9,11,9,11)
+  area4:AreaP(11,11,11,11)
+  area5:AreaPC(10,10,10,10)
+  areaJefe:AreaP(1,1,1,1)
+robots
+  robot tipo1
+  variables
+    cantFlores:numero
+    hayFlores:boolean
+    avOriginal:numero
+    caOriginal:numero
+  comenzar
+    cantFlores:=0
+    avOriginal:=PosAv
+    caOriginal:=PosCa
+    RecibirMensaje(hayFlores,robotJefe)
+    mientras hayFlores
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      si HayFlorEnLaEsquina
+        tomarFlor
+        cantFlores:=cantFlores+1
+      sino
+        hayFlores:=3=2
+      Pos(avOriginal,caOriginal)
+      LiberarEsquina(10,10)
+      EnviarMensaje(hayFlores,robotJefe)
+    Informar(cantFlores)
+  fin
+  robot tipoJefe
+  variables
+    quienJunta:numero
+    hayFlores:boolean
+    ok:boolean
+    Stop:boolean
+  comenzar
+    Random(quienJunta,1,4)
+    hayFlores:=2=2
+    Stop:=3=2
+    ok:=2=2
+    mientras hayFlores
+      Random(quienJunta,1,4)
+      si(quienJunta=1)
+        EnviarMensaje(ok,robot1)
+      sino
+        si(quienJunta=2)
+          EnviarMensaje(ok,robot2)
+        sino
+          si(quienJunta=3)
+            EnviarMensaje(ok,robot3)
+          sino
+            EnviarMensaje(ok,robot4)
+      RecibirMensaje(hayFlores,*)
+    si ~(hayFlores)
+      si(quienJunta=1)
+        EnviarMensaje(Stop,robot2)
+        EnviarMensaje(Stop,robot3)
+        EnviarMensaje(Stop,robot4)
+      sino
+        si (quienJunta=2)
+          EnviarMensaje(Stop,robot1)
+          EnviarMensaje(Stop,robot3)
+          EnviarMensaje(Stop,robot4)
+        sino
+          si (quienJunta=3)
+            EnviarMensaje(Stop,robot1)
+            EnviarMensaje(Stop,robot2)
+            EnviarMensaje(Stop,robot4)
+          sino
+            EnviarMensaje(Stop,robot1)
+            EnviarMensaje(Stop,robot2)
+            EnviarMensaje(Stop,robot3)
+  fin 
+            
+variables
+  robot1:tipo1
+  robot2:tipo1
+  robot3:tipo1
+  robot4:tipo1
+  robotJefe:tipoJefe
+comenzar
+  AsignarArea(robot1,area1)
+  AsignarArea(robot2,area2)
+  AsignarArea(robot3,area3)
+  AsignarArea(robot4,area4)
+  AsignarArea(robot1,area5)
+  AsignarArea(robot2,area5)
+  AsignarArea(robot3,area5)
+  AsignarArea(robot4,area5)
+  AsignarArea(robotJefe,areaJefe)
+  Iniciar(robot1,9,9)
+  Iniciar(robot2,11,9)
+  Iniciar(robot3,9,11)
+  Iniciar(robot4,11,11)
+  Iniciar(robotJefe,1,1)
+fin

@@ -1,0 +1,112 @@
+programa Parcial
+procesos
+  proceso depositar
+  comenzar
+    mientras(HayPapelEnLaBolsa)
+      depositarPapel
+  fin
+  proceso JuntarPapeles(E pasos:numero; ES cantPapeles:numero)
+  comenzar
+    repetir pasos
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantPapeles:=cantPapeles+1
+      mover
+  fin
+areas 
+  cuadranteuno:AreaP(1,1,7,90)
+  cuadrantedos:AreaP(8,1,14,90)
+  cuadrantetres:AreaP(15,1,21,90)
+  areaJefe:AreaP(25,1,25,1)
+  areacomun:AreaPC(30,1,30,1)
+robots 
+  robot tipo1
+  variables
+    av:numero
+    pasosTotales:numero
+    pasos:numero
+    newAv:numero
+    quienSoy:numero
+    cantPapeles:numero
+    newCa:numero
+    ca:numero
+  comenzar
+    pasosTotales:=0
+    cantPapeles:=0
+    RecibirMensaje(quienSoy,RobotJefe)
+    RecibirMensaje(av,RobotJefe)
+    RecibirMensaje(ca,RobotJefe)
+    Pos(av,ca)
+    newCa:=PosCa
+    newAv:=PosAv
+    repetir 5
+      Random(pasos,1,10)
+      JuntarPapeles(pasos,cantPapeles)
+      pasosTotales:=pasosTotales+pasos
+    BloquearEsquina(30,1)
+    Pos(30,1)
+    depositar
+    Pos(newAv,newCa)
+    LiberarEsquina(30,1)
+    EnviarMensaje(quienSoy,RobotJefe)
+    EnviarMensaje(pasosTotales,RobotJefe)
+  fin
+  robot tipoJefe
+  variables
+    av:numero
+    ID:numero
+    totalPasos:numero
+    maxPasos:numero
+    idMax:numero
+    ca:numero
+  comenzar
+    maxPasos:=- 999
+    EnviarMensaje(1,Robot1)
+    EnviarMensaje(2,Robot2)
+    EnviarMensaje(3,Robot3)
+    Random(av,1,7)
+    Random(ca,1,40)
+    EnviarMensaje(av,Robot1)
+    EnviarMensaje(ca,Robot1)
+    Random(av,8,14)
+    Random(ca,1,40)
+    EnviarMensaje(av,Robot2)
+    EnviarMensaje(ca,Robot2)
+    Random(av,15,21)
+    Random(ca,1,40)
+    EnviarMensaje(av,Robot3)
+    EnviarMensaje(ca,Robot3)
+    repetir 3
+      RecibirMensaje(ID,*)
+      si(ID=1)
+        RecibirMensaje(totalPasos,Robot1)
+      sino
+        si(ID=2)
+          RecibirMensaje(totalPasos,Robot2)
+        sino
+          RecibirMensaje(totalPasos,Robot3)
+      si(totalPasos>maxPasos)
+        maxPasos:=totalPasos
+        idMax:=ID
+    Informar(idMax)
+  fin
+variables
+  Robot1:tipo1
+  Robot2:tipo1
+  Robot3:tipo1
+  RobotJefe:tipoJefe
+comenzar 
+  AsignarArea(Robot1,cuadranteuno)
+  AsignarArea(Robot1,areacomun)
+  AsignarArea(Robot2,cuadrantedos)
+  AsignarArea(Robot2,areacomun)
+  AsignarArea(Robot3,cuadrantetres)
+  AsignarArea(Robot3,areacomun)
+  AsignarArea(RobotJefe,areaJefe)
+  Iniciar(Robot1,1,1)
+  Iniciar(Robot2,8,1)
+  Iniciar(Robot3,15,1)
+  Iniciar(RobotJefe,25,1)
+fin 
+ 
+ 

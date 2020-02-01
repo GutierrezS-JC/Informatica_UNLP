@@ -1,0 +1,54 @@
+programa Ejercicio2-3c
+procesos
+  proceso JuntarFlores(ES cant:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:=cant+1
+  fin
+  proceso Rectangulo(E lado1,lado2:numero; ES cant:numero)
+  comenzar
+    repetir 2
+      repetir lado1
+        mientras(HayFlorEnLaEsquina)
+          JuntarFlores(cant)
+        mover
+      derecha
+      repetir lado2
+        mientras(HayFlorEnLaEsquina)
+          JuntarFlores(cant)
+        mover
+      derecha
+  fin
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant:numero
+  comenzar
+    cant:=0
+    Rectangulo(5,3,cant)
+    Informar(cant)
+  fin
+variables
+  Robot1 tipo1
+  Robot2 tipo1
+  Robot3 tipo1
+  Robot4 tipo1
+  Robot5 tipo1
+  Robot6 tipo1
+comenzar
+  AsignarArea(Robot1,ciudad)
+  AsignarArea(Robot2,ciudad)
+  AsignarArea(Robot3,ciudad)
+  AsignarArea(Robot4,ciudad)
+  AsignarArea(Robot5,ciudad)
+  AsignarArea(Robot6,ciudad)
+  Iniciar(Robot1,2,2)
+  Iniciar(Robot2,6,2)
+  Iniciar(Robot3,10,2)
+  Iniciar(Robot4,14,2)
+  Iniciar(Robot5,18,2)
+  Iniciar(Robot6,22,2)
+fin 

@@ -1,0 +1,135 @@
+programa Ejercicio2-3c
+procesos
+  proceso JuntarFlores(ES cant:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:=cant+1
+  fin
+  proceso Rectangulo(E lado1:numero; E lado2:numero; ES cant:numero)
+  comenzar
+    repetir 2
+      repetir lado1
+        mientras(HayFlorEnLaEsquina)
+          JuntarFlores(cant)
+        mover
+      derecha
+      repetir lado2
+        mientras(HayFlorEnLaEsquina)
+          JuntarFlores(cant)
+        mover
+      derecha
+  fin
+areas
+  areaComun:AreaC(12,10,36,20)
+  area1:AreaP(2,2,5,7)
+  area2:AreaP(6,2,9,7)
+  area3:AreaP(10,2,13,7)
+  area4:AreaP(14,2,17,7)
+  area5:AreaP(18,2,21,7)
+  area6:AreaP(22,2,25,7)
+  area7:AreaP(1,1,1,1)
+robots
+  robot tipo1
+  variables
+    cant:numero
+    av:numero
+    ca:numero
+    quienSoy:numero
+    alto:numero
+  comenzar
+    cant:=0
+    RecibirMensaje(quienSoy,RobotJefe)
+    RecibirMensaje(av,RobotJefe)
+    RecibirMensaje(ca,RobotJefe)
+    Pos(av,ca)
+    Random(alto,1,10)
+    Rectangulo(alto,3,cant)
+    EnviarMensaje(quienSoy,RobotJefe)
+    EnviarMensaje(cant,RobotJefe)
+  fin
+  robot tipoJefe
+  variables 
+    cant:numero
+    total:numero
+    quienSos:numero
+    RobotMax:numero
+    max:numero
+  comenzar
+    total:=0
+    max:=-999
+    quienSos:=0
+    RobotMax:=0
+    EnviarMensaje(1,Robot1)
+    EnviarMensaje(12,Robot1)
+    EnviarMensaje(10,Robot1)
+    EnviarMensaje(2,Robot2)
+    EnviarMensaje(16,Robot2)
+    EnviarMensaje(10,Robot2)
+    EnviarMensaje(3,Robot3)
+    EnviarMensaje(20,Robot3)
+    EnviarMensaje(10,Robot3)
+    EnviarMensaje(4,Robot4)
+    EnviarMensaje(24,Robot4)
+    EnviarMensaje(10,Robot4)
+    EnviarMensaje(5,Robot5)
+    EnviarMensaje(28,Robot5)
+    EnviarMensaje(10,Robot5)
+    EnviarMensaje(6,Robot6)
+    EnviarMensaje(32,Robot6)
+    EnviarMensaje(10,Robot6)
+    repetir 6
+      RecibirMensaje(quienSos,*)
+      si(quienSos=1)
+        RecibirMensaje(cant,Robot1)
+      sino
+        si(quienSos=2)
+          RecibirMensaje(cant,Robot2)
+        sino
+          si(quienSos=3)
+            RecibirMensaje(cant,Robot3)
+          sino
+            si(quienSos=4)
+              RecibirMensaje(cant,Robot4)
+            sino
+              si(quienSos=5)
+                RecibirMensaje(cant,Robot5)
+              sino
+                RecibirMensaje(cant,Robot6)
+      si(cant>max)
+        RobotMax:=quienSos
+        max:=cant
+      total:=total+cant
+    Informar(quienSos)
+    Informar(total)
+  fin
+variables
+  Robot1:tipo1
+  Robot2:tipo1
+  Robot3:tipo1
+  Robot4:tipo1
+  Robot5:tipo1
+  Robot6:tipo1
+  RobotJefe: tipoJefe
+comenzar
+  AsignarArea(Robot1,area1)
+  AsignarArea(Robot1,areaComun)
+  AsignarArea(Robot2,area2)
+  AsignarArea(Robot2,areaComun)
+  AsignarArea(Robot3,area3)
+  AsignarArea(Robot3,areaComun)
+  AsignarArea(Robot4,area4)
+  AsignarArea(Robot4,areaComun)
+  AsignarArea(Robot5,area5)
+  AsignarArea(Robot5,areaComun)
+  AsignarArea(Robot6,area6)
+  AsignarArea(Robot6,areaComun)
+  AsignarArea(RobotJefe,area7)
+  Iniciar(Robot1,2,2)
+  Iniciar(Robot2,6,2)
+  Iniciar(Robot3,10,2)
+  Iniciar(Robot4,14,2)
+  Iniciar(Robot5,18,2)
+  Iniciar(Robot6,22,2)
+  Iniciar(RobotJefe,1,1)
+fin 

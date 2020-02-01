@@ -1,0 +1,225 @@
+programa repaso   {Area parcialmente compartida se entra de a uno}
+procesos
+areas
+  areaComun:AreaC(1,1,20,20)
+  areaFiscalizador:AreaP(21,21,21,21)
+robots
+  robot tipo1
+  variables
+    ca:numero
+    av:numero
+    cantFlores:numero
+    cantPapeles:numero
+    caOriginal:numero
+    avOriginal:numero
+  comenzar
+    cantFlores:=0
+    cantPapeles:=0
+    derecha
+    caOriginal:=PosCa
+    avOriginal:=PosAv
+    RecibirMensaje(ca,RobotFiscalizador)  {Se lo manda el fiscalizador}
+    Pos(1,ca)
+    repetir 5
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        cantFlores:=cantFlores+1
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantPapeles:=cantPapeles+1
+      mover
+    av:=PosAv
+    ca:=PosCa
+    Pos(avOriginal,caOriginal)
+    EnviarMensaje(1,*)
+    EnviarMensaje(av,*)
+    EnviarMensaje(ca,*)
+    EnviarMensaje(cantFlores,*)
+    EnviarMensaje(cantPapeles,*)
+  fin
+  robot tipo2
+  comenzar
+    avOriginal:=PosAv
+    caOriginal:=PosCa
+    RecibirMensaje(quienSoy,RobotJefe)  {Recibe el ID del jefe}
+    RecibirMensaje(ID,*)  {Recibe el ID del robot 1,2 o 3}
+    si(ID=1)
+      RecibirMensaje(av,Robot1)
+      RecibirMensaje(ca,Robot1)
+      RecibirMensaje(cantFlores,Robot1)
+      RecibirMensaje(cantPapeles,Robot1)
+      derecha
+      Pos(av,ca)
+      repetir 5
+        mover
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          cantFlores:=cantFlores+1
+        mientras(HayPapelEnLaEsquina)
+          tomarPapel
+          cantPapeles:=cantPapeles+1
+      av:=PosAv
+      ca:=PosCa
+      Pos(avOriginal,caOriginal)
+    si(ID=2)
+      RecibirMensaje(av,Robot2)
+      RecibirMensaje(ca,Robot2)
+      RecibirMensaje(cantFlores,Robot2)
+      RecibirMensaje(cantPapeles,Robot2)
+      derecha
+      Pos(av,ca)
+      repetir 5
+        mover
+        mientras HayFlorEnLaEsquina
+          tomarFLor
+          cantFlores:=cantFlores+1
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          cantPapeles:cantPapeles+1
+      av:PosAv
+      ca:PosCa
+      Pos(avOriginal,caOriginal)
+    si(quienSoy=2) 
+      EnviarMensaje(quienSoy,Robot3)
+      EnviarMensaje(av,Robot3)
+      EnviarMensaje(ca,Robot3)
+      EnviarMensaje(cantFlores,Robot3)
+      EnviarMensaje(cantPapeles,Robot3)
+      EnviarMensaje(cantPapeles,RobotFiscalizador)
+      EnviarMensaje(CantFlores,RobotFiscalizador)
+    si(quienSoy=3)
+      EnviarMensaje(quienSoy,Robot2)
+      EnviarMensaje(av,Robot2)
+      EnviarMensaje(ca,Robot2)
+      EnviarMensaje(cantFlores,Robot2)
+      EnviarMensaje(cantPapeles,Robot2)
+      EnviarMensaje(cantFlores,RobotFiscalizador)
+      EnviarMensaje(cantPapeles,RobotFiscalizador)
+  fin
+  robot tipo4  {Robot4}
+  comenzar
+    cantFlores2:=0
+    cantPapeles2:=0
+    Random(av,1,15)
+    avOriginal:=PosAv
+    caOriginal:=PosCa
+    Pos(av,5)
+    repetir 5
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        cantFlores2:=cantFlores2+1
+      mientras(HayFlorEnLaEsquina)
+        tomarPapel
+        cantPapeles2:=cantPapeles2+1
+      mover
+    av:=PosAv
+    ca:=PosCa
+    Pos(avOriginal,caOriginal)
+    EnviarMensaje(av,Robot5)
+    EnviarMensaje(ca,Robot5)
+    EnviarMensaje(cantFlores2,Robot5)
+    EnviarMensaje(cantPapeles2,Robot5)
+  fin
+  robot tipo5
+  comenzar
+    avOriginal:=PosAv
+    caOriginal:=PosCa
+    RecibirMensaje(av,Robot4)
+    RecibirMensaje(ca,Robot4)
+    RecibirMensaje(cantFlores2,Robot4)
+    RecibirMensaje(cantPapeles2,Robot4)
+    Pos(av,ca)
+    repetir 5
+      mover
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        cantFlores2:=cantFlores2+1
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantPapeles2:=cantPapeles2+1
+    av:=PosAv
+    ca:=PosCa
+    Pos(avOriginal,caOriginal)
+    EnviarMensaje(av,Robot6)
+    EnviarMensaje(ca,Robot6)
+    EnviarMensaje(cantFlores2,Robot6)
+    EnviarMensaje(cantPapeles2,Robot6)
+  fin
+  robot tipo6
+  comenzar
+    avOriginal:PosAv
+    caOriginal:PosCa
+    RecibirMensaje(av,Robot5)
+    RecibirMensaje(ca,Robot5)
+    RecibirMensaje(cantFlores2,Robot5)
+    RecibirMensaje(cantPapeles2,Robot5)
+    Pos(av,ca)
+    repetir 5
+      mover
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        cantFlores2:=cantFlores2+1
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantPapeles2:=cantPapees2+1
+    Pos(avOriginal,caOriginal)
+    RecibirMensaje(waiting,RobotFiscalizador)
+    si(waiting=V)
+      EnviarMensaje(cantFlores2,RobotFiscalizador)
+      EnviarMensaje(cantPapeles2,RobotFiscalizador)
+  fin 
+  robot tipoFiscalizador
+  comenzar
+    floresEquipo1:=0
+    papelesEquipo1:=0
+    EnviarMensaje(2,Robot2)
+    EnviarMensaje(3,Robot3)
+    Random(ca,5,20)
+    EnviarMensaje(ca,Robot1)
+    repetir 2
+      RecibirMensaje(ID,*)
+      si(ID=2)
+        RecibirMensaje(cantFLores1,Robot2)
+        RecibirMensaje(cantPapeles1,Robot2)
+      sino
+        si(ID=3)
+          RecibirMensaje(cantFlores1,Robot3)
+          RecibirMensaje(cantPapeles1,Robot3)
+      floresEquipo1:=floresEquipo1+cantFlores1
+      papelesEquipo1:=papelesEquipo1+cantPapeles1
+    totalEquipo1:=floresEquipo1+papelesEquipo1
+    si(totalEquipo1>max)
+      max:=TotalEquipo1
+      maxEquipo:=1
+    EnviarMensaje(V,Robot6)
+    RecibirMensaje(cantFLores2,Robot6)
+    RecibirMensaje(cantPapeles2,Robot6)
+    totalEquipo2:=cantFlores2+cantPapeles2
+    si(totalEquipo2>max)
+      maxEquipo:=2
+    Informar(maxEquipo)
+  fin
+variables
+  Robot1:tipo1
+  Robot2:tipo2
+  Robot3:tipo2
+  Robot4:tipo4
+  Robot5:tipo5
+  Robot6:tipo6
+  RobotFiscalizador:tipoFiscalizador
+comenzar
+  AsignarArea(Robot1,areaComun)
+  AsignarArea(Robot2,areaComun)
+  AsignarArea(Robot3,areaComun)
+  AsignarArea(Robot4,areaComun)
+  AsignarArea(Robot5,areaComun)
+  AsignarArea(Robot6,areaComun)
+  AsignarArea(RobotFiscalizador,areaFiscalizador)
+  Iniciar(Robot1,1,1)
+  Iniciar(Robot2,2,2)
+  Iniciar(Robot3,3,3)
+  Iniciar(Robot4,4,4)
+  Iniciar(Robot5,5,5)
+  Iniciar(Robot6,6,6)
+  Iniciar(RobotFiscalizador,7,7)
+fin

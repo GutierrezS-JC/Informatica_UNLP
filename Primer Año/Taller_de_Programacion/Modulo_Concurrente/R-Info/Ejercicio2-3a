@@ -1,0 +1,35 @@
+programa Ejercicio2-3a
+procesos
+  proceso Rectangulo(ES cant:numero)
+  comenzar
+    repetir 2
+      repetir 5
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          cant:=cant+1 
+        mover
+      derecha
+      repetir 3
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+          cant:=cant+1
+        mover
+      derecha
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant:numero
+  comenzar
+    cant:=0
+    Rectangulo(cant)
+    Informar(cant)
+  fin
+variables
+  Robot1:tipo1
+comenzar
+  AsignarArea(Robot1,ciudad)
+  Iniciar(Robot1,2,2)
+fin

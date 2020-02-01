@@ -1,0 +1,89 @@
+programa Ejercicio4-3
+procesos
+  proceso juntarFlores(ES cantFlores:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantFlores:=cantFlores+1
+  fin
+  
+  proceso depositarFlores
+  comenzar
+    mientras(HayFlorEnLaBolsa)
+      depositarFlor
+  fin
+  
+  proceso hacerPerimetro(ES cantFlores:numero; E alto:numero; E ancho:numero)
+  comenzar
+    repetir 2
+      repetir alto
+        juntarFlores(cantFlores)
+        mover
+      derecha
+      repetir ancho
+        juntarFlores(cantFlores)
+        mover
+      derecha
+  fin
+areas
+  AreaJefe:AreaP(1,1,1,1)
+  Area1 : AreaP(15,15,30,35)
+  Area2: AreaP(40,40,55,60)
+  Area3: AreaPC(10,10,10,10)
+  AreaUno:AreaP(2,2,2,2)
+  AreaDos:AreaP(6,6,6,6)
+robots 
+  robot tipo1
+  variables
+    calleOri: numero
+    aveOri: numero
+    cantFlores:numero
+    av:numero
+    ca:numero
+    alto:numero
+    ancho:numero
+  comenzar
+    calleOri := PosCa
+    aveOri := PosAv
+    cantFlores:=0
+    RecibirMensaje(av,RobotJefe)
+    RecibirMensaje(ca,RobotJefe)
+    RecibirMensaje(alto,RobotJefe)
+    RecibirMensaje(ancho,RobotJefe)
+    Pos(av,ca)
+    hacerPerimetro(cantFlores,alto,ancho)
+    BloquearEsquina(10, 10)
+    Pos (10,10)
+    depositarFlores
+    Pos(calleOri, aveOri)
+    LiberarEsquina(10,10)
+  fin
+  
+  robot tipoJefe
+  comenzar
+    EnviarMensaje(15,Robot1)
+    EnviarMensaje(15,Robot1)
+    EnviarMensaje(40,Robot2)
+    EnviarMensaje(40,Robot2)
+    EnviarMensaje(20,Robot1)
+    EnviarMensaje(15,Robot1)
+    EnviarMensaje(20,Robot2)
+    EnviarMensaje(15,Robot2)
+  fin
+variables 
+  Robot1: tipo1
+  Robot2: tipo1
+  RobotJefe: tipoJefe
+  
+comenzar 
+  AsignarArea(RobotJefe,AreaJefe)
+  AsignarArea(Robot1,Area1)
+  AsignarArea(Robot1,AreaUno)
+  AsignarArea(Robot1,Area3)
+  AsignarArea(Robot2,Area2)
+  AsignarArea(Robot2,AreaDos)
+  AsignarArea(Robot2,Area3)
+  Iniciar(RobotJefe,1,1)
+  Iniciar(Robot1, 2, 2)
+  Iniciar(Robot2, 6, 6) 
+fin

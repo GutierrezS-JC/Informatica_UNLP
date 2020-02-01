@@ -1,0 +1,165 @@
+programa repaso
+areas
+  areacomun:AreaPC(10,10,25,25)
+  area1:AreaP(1,1,1,100)
+  area2:AreaP(2,1,2,100)
+  area3:AreaP(3,1,3,100)
+  area4:AreaP(4,1,4,100)
+  areaJefe:AreaP(5,1,5,1)
+robots
+  robot tipoCompetidor
+  variables
+    ID:numero
+    av:numero
+    ca:numero
+    avOriginal:numero
+    caOriginal:numero
+    cantFlores:numero
+    cantPapel:numero
+    sosVos:boolean
+  comenzar
+    avOriginal:=PosAv
+    caOriginal:=PosCa
+    cantPapel:=0
+    cantFlores:=0
+    RecibirMensaje(ID,robotJefe)
+    repetir 5
+      Random(av,10,25)
+      Random(ca,10,25)
+      BloquearEsquina(av,ca)
+      Pos(av,ca)
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        cantFlores:=cantFlores+1
+      Pos(avOriginal,caOriginal)
+      LiberarEsquina(av,ca)
+    EnviarMensaje(cantFlores,robotJefe)
+    {Segunda Etapa}
+    RecibirMensaje(cantFlores,robotJefe)
+    repetir cantFlores
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        cantPapel:=cantPapel+1
+      mover
+    EnviarMensaje(ID,robotJefe)
+    EnviarMensaje(cantPapel,robotJefe)
+    {Tercera Etapa}
+    RecibirMensaje(sosVos,robotJefe)
+    si (sosVos)
+      RecibirMensaje(av,robotJefe)
+      RecibirMensaje(ca,robotJefe)
+      BloquearEsquina(av,ca)
+      Pos(av,ca)
+      repetir cantPapel
+        depositarPapel
+      LiberarEsquina(av,ca)
+  fin
+  robot tipoJefe
+  variables
+    totalFlores:numero
+    cantFlores:numero
+    ID:numero
+    cantPapeles:numero
+    min:numero
+    idMin:numero
+    av:numero
+    ca:numero
+    sosVos:boolean
+    noSosVos:boolean
+  comenzar
+    totalFlores:=0
+    min:=999
+    idMin:=999
+    EnviarMensaje(1,robot1)
+    EnviarMensaje(2,robot2)
+    EnviarMensaje(3,robot3)
+    EnviarMensaje(4,robot4)
+    repetir 4
+      RecibirMensaje(cantFlores,*)
+      totalFlores:=cantFlores+totalFlores
+    Informar(totalFlores)
+    EnviarMensaje(totalFlores,robot1)
+    EnviarMensaje(totalFlores,robot2)
+    EnviarMensaje(totalFlores,robot3)
+    EnviarMensaje(totalFlores,robot4)
+    repetir 4
+      RecibirMensaje(ID,*)
+      si(ID=1)
+        RecibirMensaje(cantPapeles,robot1)
+      sino
+        si (ID=2)
+          RecibirMensaje(cantPapeles,robot2)
+        sino
+          si (ID=3)
+            RecibirMensaje(cantPapeles,robot3)
+          sino
+            si (ID=4)
+              RecibirMensaje(cantPapeles, robot4)
+      si(cantPapeles<min)
+        min:=cantPapeles
+        idMin:=ID          
+    Informar(idMin)
+    sosVos:=2=2
+    noSosVos:=3=2
+    si idMin=1
+      EnviarMensaje(noSosVos,robot2)
+      EnviarMensaje(noSosVos,robot3)
+      EnviarMensaje(noSosVos,robot4)
+      EnviarMensaje(sosVos,robot1)
+      Random(av,10,25)
+      Random(ca,10,25)
+      EnviarMensaje(av,robot1)
+      EnviarMensaje(ca,robot1)
+    sino
+      si idMin=2
+        EnviarMensaje(noSosVos,robot1)
+        EnviarMensaje(noSosVos,robot3)
+        EnviarMensaje(noSosVos,robot4)
+        EnviarMensaje(sosVos,robot2)
+        Random(av,10,25)
+        Random(ca,10,25)
+        EnviarMensaje(av,robot2)
+        EnviarMensaje(ca,robot2)
+      sino
+        si idMin=3
+          EnviarMensaje(noSosVos,robot1)
+          EnviarMensaje(noSosVos,robot2)
+          EnviarMensaje(noSosVos,robot4)
+          EnviarMensaje(sosVos,robot3)
+          Random(av,10,25)
+          Random(ca,10,25)
+          EnviarMensaje(av,robot3)
+          EnviarMensaje(ca,robot3)
+        sino
+          si idMin=4
+            EnviarMensaje(noSosVos,robot1)
+            EnviarMensaje(noSosVos,robot2)
+            EnviarMensaje(noSosVos,robot3)
+            EnviarMensaje(sosVos,robot4)
+            Random(av,10,25)
+            Random(ca,10,25)
+            EnviarMensaje(av,robot4)
+            EnviarMensaje(ca,robot4)
+  fin
+variables
+  robot1:tipoCompetidor
+  robot2:tipoCompetidor
+  robot3:tipoCompetidor
+  robot4:tipoCompetidor
+  robotJefe:tipoJefe
+comenzar
+  AsignarArea(robot1,area1)
+  AsignarArea(robot1,areacomun)
+  AsignarArea(robot2,area2)
+  AsignarArea(robot2,areacomun)
+  AsignarArea(robot3,area3)
+  AsignarArea(robot3,areacomun)
+  AsignarArea(robot4,area4)
+  AsignarArea(robot4,areacomun)
+  AsignarArea(robotJefe,areaJefe)
+  Iniciar(robot1,1,1)
+  Iniciar(robot2,2,1)
+  Iniciar(robot3,3,1)
+  Iniciar(robot4,4,1)
+  Iniciar(robotJefe,5,1)
+fin          

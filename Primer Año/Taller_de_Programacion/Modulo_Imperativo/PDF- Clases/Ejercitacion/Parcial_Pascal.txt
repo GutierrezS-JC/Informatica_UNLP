@@ -1,0 +1,7 @@
+Una cadena de 6 locales de eelectrodomesticos posee un sistema de puntos para las compras de los clientes. De cada compra se conoce el codigo del local (1..6), numero de compra, codigo de cliente, dni del cliente y puntos obtenidos. Se solicita implementar un programa que eprmita.
+
+Generar 6 listas con las compras realizadas en cada local de electrodomesticos, cada una de ellas ordenadas por codigo de cliente en forma ascendente. La lectrua de la informacion ede cada lista finaliza cuando se lee el codigo 999 el cual no se procesa. Un cliente puede comprar en distintos locales y mas de una vez.
+
+utilizando las listas egneradas en el punto A acumular los puntos obtenidos por cada codigo de cliente y almacenar esa informacion en un arbol binario de busqueda. El nodo del arbol debe contener codigo de cliente dni del cliente y la cantidad total de puntos obtenidos. El arbol deber ordenarse por dni de cliente.
+
+Implementar un modulo que utilizando el arbol generado en el punto b retorne el dni de cliente con mayor cantidad de puntos acumulados. El programa debe informar el resultado

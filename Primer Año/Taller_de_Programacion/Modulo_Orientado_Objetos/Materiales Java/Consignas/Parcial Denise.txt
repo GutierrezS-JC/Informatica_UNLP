@@ -1,0 +1,29 @@
+1-A) Genere una clase para representar espectadores, que se caracterizan por nombre,DNI, edad.
+     Incorpore getters y setters y un constructor que permita iniciar el espectador con un nombre, dni y edad recibidos.
+
+1-B) Generar una clase para representar funciones de teatro.Una funcion de teatro se caracteriza por mantener:
+     Titulo, fecha, hora, una estructuraque representa la sala(20 filas y 10 butacas por fila) que 
+     almacenara los espectadores registrados para la funcion, y una estructura que almacena para cada fila la cantidad de butacas ocupadas.
+
+a) Defina metodos getters/Setters para los atributos que considere adecuado.
+B) Implemente un constructor que inicie la funcion de teatro con un titulo, fecha y hora recibidos por parametro.
+   La sala inicialmente debe estar vacia.
+
+C) Incorpore los siguientes metodos.
+   a) ValidarFila: Recibe un nro "F" y devuelve un boolean que indica si "F" es un numero de fila valida o no.
+   b) hay butacaLibreEnLaFila: Recibe un nro de fila valido "F" y devuelve un boolean que indica si hay una butaca libre
+      en la fila "F" o no.
+   c) agregarEspectadorAFila: recibe un nro de fila valido "F" y un espectador "E" y agrega a "E"en la primer butaca libre de la fila "F".
+      debiendo retornar el numero de butaca asignado.
+   d) calcularButacasLibres: Calcula y devuelve la cantidad total de butacas libre para la funcion.
+   e) calcularEdadPromEspectadores: calcula y devuelve la edad promedio de los espectadores registrados.
+   f) estaRegistradoEspectador: Recibe un numero de DNI "D" y devuelve un boolean que indica si existe un espectador
+      registrado en la sala con DNI igual a "D".
+
+2) Escriba un programa que instancie una funcion de teatro para la obra "Cazafantasmas" con hora "20:00" y fecha "22-10-2018"
+   Luego simule la venta de localidades de la siguiente manera. Leer DNIs de personas hasta ingresar 0 o hasta que no queden butacas libres paara la funcion.
+   A la persona se le solicita ademas nombre, edad y el numero de fila que prefiere. En caso que el nro de fila sea valido, exista una butaca libre en esa fila
+   y no exista un espectador registrado en la funcion con ese DNI, agregar a la paersona como espectador en la fila solicitada e imprimir el nro
+   de butaca asignado. Caso contrario informar el error correspondiente.
+   Al finalizar la venta, informar la cantidad de butacas libres y la edad promedio de los espectadores registrados
+   para la funcion.

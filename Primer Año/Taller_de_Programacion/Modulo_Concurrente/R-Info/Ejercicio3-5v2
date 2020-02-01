@@ -1,0 +1,85 @@
+programa Ejercicio2-3c
+procesos
+  proceso JuntarFlores(ES cant:numero)
+  comenzar
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cant:=cant+1
+  fin
+  proceso Rectangulo(E lado1:numero; E lado2:numero; ES cant:numero)
+  comenzar
+    repetir 2
+      repetir lado1
+        mientras(HayFlorEnLaEsquina)
+          JuntarFlores(cant)
+        mover
+      derecha
+      repetir lado2
+        mientras(HayFlorEnLaEsquina)
+          JuntarFlores(cant)
+        mover
+      derecha
+  fin
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant:numero
+    av:numero
+    ca:numero
+  comenzar
+    cant:=0
+    RecibirMensaje(av,RobotJefe)
+    RecibirMensaje(ca,RobotJefe)
+    Pos(av,ca)
+    Rectangulo(5,3,cant)
+    EnviarMensaje(cant,RobotJefe)
+  fin
+  robot tipoJefe
+  variables 
+    cant:numero
+    total:numero
+  comenzar
+    total:=0
+    EnviarMensaje(12,Robot1)
+    EnviarMensaje(10,Robot1)
+    EnviarMensaje(16,Robot2)
+    EnviarMensaje(10,Robot2)
+    EnviarMensaje(20,Robot3)
+    EnviarMensaje(10,Robot3)
+    EnviarMensaje(24,Robot4)
+    EnviarMensaje(10,Robot4)
+    EnviarMensaje(28,Robot5)
+    EnviarMensaje(10,Robot5)
+    EnviarMensaje(32,Robot6)
+    EnviarMensaje(10,Robot6)
+    repetir 6
+      RecibirMensaje(cant,*)
+      total:=total+cant
+    Informar(total)
+  fin
+variables
+  Robot1:tipo1
+  Robot2:tipo1
+  Robot3:tipo1
+  Robot4:tipo1
+  Robot5:tipo1
+  Robot6:tipo1
+  RobotJefe: tipoJefe
+comenzar
+  AsignarArea(Robot1,ciudad)
+  AsignarArea(Robot2,ciudad)
+  AsignarArea(Robot3,ciudad)
+  AsignarArea(Robot4,ciudad)
+  AsignarArea(Robot5,ciudad)
+  AsignarArea(Robot6,ciudad)
+  AsignarArea(RobotJefe,ciudad)
+  Iniciar(Robot1,2,2)
+  Iniciar(Robot2,6,2)
+  Iniciar(Robot3,10,2)
+  Iniciar(Robot4,14,2)
+  Iniciar(Robot5,18,2)
+  Iniciar(Robot6,22,2)
+  Iniciar(RobotJefe,1,1)
+fin 
