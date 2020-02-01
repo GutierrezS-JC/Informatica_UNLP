@@ -1,2 +1,2 @@
 # Informatica_UNLP
-Practicas resueltas correspondientes a las carreras de Licenciatura de Informatica/Sistemas y APU. 
+Practicas resueltas correspondientes a las carreras de Licenciatura en Informatica/Sistemas y APU. 
